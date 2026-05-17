@@ -38,13 +38,32 @@
       "headline": "Best Hotel in Chandrapur, Rautahat — Hotel Aarohi",
       "description": "Discover Hotel Aarohi, the best hotel in Chandrapur, Rautahat. Experience luxury rooms, authentic Thakali, and world-class hospitality.",
       "image": "https://hotelaarohi.ujjwalrupakheti.com.np/assets/Room1.webp",
-      "author": {"@type": "Organization", "name": "Hotel Aarohi"},
-      "publisher": {"@type": "Organization", "name": "Hotel Aarohi", "logo": {"@type": "ImageObject", "url": "https://hotelaarohi.ujjwalrupakheti.com.np/assets/Room1.webp"}},
-      "datePublished": "2026-05-17",
-      "dateModified": "2026-05-17",
+      "author": {
+        "@type": "Organization", 
+        "name": "Hotel Aarohi Management",
+        "url": "https://hotelaarohi.ujjwalrupakheti.com.np/"
+      },
+      "publisher": {
+        "@type": "Organization", 
+        "name": "Hotel Aarohi", 
+        "logo": {
+          "@type": "ImageObject", 
+          "url": "https://hotelaarohi.ujjwalrupakheti.com.np/assets/favicon.png"
+        }
+      },
+      "datePublished": "2026-05-18",
+      "dateModified": "2026-05-18",
+      "about": {
+        "@type": "Hotel",
+        "name": "Hotel Aarohi"
+      },
       "speakable": {
         "@type": "SpeakableSpecification",
-        "cssSelector": ["h1", ".prose p:first-of-type"]
+        "xpath": [
+          "/html/head/title",
+          "/html/body/article/div/h1",
+          "/html/body/article/div/div/p[1]"
+        ]
       }
     }
     </script>
@@ -56,25 +75,55 @@
       "alternateName": ["Hotel Aarohi Chandrapur", "Aarohi Hotel Chapur", "Hotel Aarohi Rautahat"],
       "description": "Hotel Aarohi is the best luxury hotel in Chandrapur, Rautahat, Nepal.",
       "url": "https://hotelaarohi.ujjwalrupakheti.com.np",
+      "logo": "https://hotelaarohi.ujjwalrupakheti.com.np/assets/favicon.png",
+      "image": "https://hotelaarohi.ujjwalrupakheti.com.np/assets/Room1.webp",
       "telephone": "+977-9841946505",
       "email": "reservations@aarohi.com",
       "priceRange": "NPR 2,500 - NPR 6,000",
+      "starRating": {
+        "@type": "Rating",
+        "ratingValue": "4"
+      },
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Chandrapur Municipality",
+        "streetAddress": "East-West Highway, Chandrapur Municipality",
         "addressLocality": "Chandrapur",
-        "addressRegion": "Rautahat",
+        "addressRegion": "Rautahat, Madhesh Province",
         "postalCode": "44515",
         "addressCountry": "NP"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "26.8567",
-        "longitude": "85.3167"
+        "latitude": "27.1352",
+        "longitude": "85.3411" 
       },
+      "hasMap": "https://maps.google.com/?q=Hotel+Aarohi,+Chandrapur,+Nepal",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Free High-Speed Wi-Fi",
+          "value": "True"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Secure Parking",
+          "value": "True"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "In-house Restaurant (Thakali & Continental)",
+          "value": "True"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Air-Conditioned Banquet Halls",
+          "value": "True"
+        }
+      ],
       "areaServed": [
-        {"@type": "City", "name": "Chandrapur"},
-        {"@type": "AdministrativeArea", "name": "Rautahat"}
+        {"@type": "City", "name": "Chandrapur", "sameAs": "https://en.wikipedia.org/wiki/Chandrapur,_Nepal"},
+        {"@type": "City", "name": "Chapur"},
+        {"@type": "AdministrativeArea", "name": "Rautahat District", "sameAs": "https://en.wikipedia.org/wiki/Rautahat_District"}
       ]
     }
     </script>
@@ -83,11 +132,38 @@
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {"@type": "Question", "name": "What is the best hotel in Chandrapur?", "acceptedAnswer": {"@type": "Answer", "text": "Hotel Aarohi is the best hotel in Chandrapur, Rautahat. It offers luxury rooms, authentic Thakali dining, banquet halls, and exceptional service."}},
-        {"@type": "Question", "name": "What is the best hotel in Chapur, Nepal?", "acceptedAnswer": {"@type": "Answer", "text": "Hotel Aarohi in Chapur (Chandrapur), Rautahat is the top-rated hotel. Rooms start from NPR 2,500 with free Wi-Fi, parking, and 24-hour service."}},
-        {"@type": "Question", "name": "Where can I find the best Thakali in Chandrapur?", "acceptedAnswer": {"@type": "Answer", "text": "Hotel Aarohi Restaurant serves the best Thakali in Chandrapur. Our authentic Thakali sets are prepared with premium local ingredients."}},
-        {"@type": "Question", "name": "What is the price of rooms at Hotel Aarohi?", "acceptedAnswer": {"@type": "Answer", "text": "Hotel Aarohi offers Standard rooms from NPR 2,500, Deluxe from NPR 3,000, Luxury from NPR 4,000, and Suites from NPR 5,000 per night."}},
-        {"@type": "Question", "name": "Does Hotel Aarohi have a banquet hall?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, Hotel Aarohi has multiple event halls including Hall A, Program Hall, and a Stage for conferences, weddings, and celebrations in Chandrapur."}}
+        {
+          "@type": "Question", 
+          "name": "What makes Hotel Aarohi the top choice for travelers in Rautahat?", 
+          "acceptedAnswer": {
+            "@type": "Answer", 
+            "text": "Our unmatched blend of modern luxury amenities, impeccable hygiene standards, serene ambiance, and a highly trained hospitality team sets us apart from other lodgings in the district."
+          }
+        },
+        {
+          "@type": "Question", 
+          "name": "Are your facilities suitable for corporate events and seminars?", 
+          "acceptedAnswer": {
+            "@type": "Answer", 
+            "text": "Absolutely. We offer multiple climate-controlled banquet halls equipped with modern presentation technology, supported by customized catering packages designed specifically for business events."
+          }
+        },
+        {
+          "@type": "Question", 
+          "name": "Do you provide authentic local cuisine?", 
+          "acceptedAnswer": {
+            "@type": "Answer", 
+            "text": "Yes, our restaurant is renowned for its authentic Thakali cuisine, prepared using traditional methods and fresh, locally sourced ingredients from the surrounding agricultural regions."
+          }
+        },
+        {
+          "@type": "Question", 
+          "name": "Is secure parking available for guests?", 
+          "acceptedAnswer": {
+            "@type": "Answer", 
+            "text": "We provide ample, complimentary secure parking on the premises for all our guests, ensuring peace of mind during your stay."
+          }
+        }
       ]
     }
     </script>
@@ -96,8 +172,18 @@
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://hotelaarohi.ujjwalrupakheti.com.np/"},
-        {"@type": "ListItem", "position": 2, "name": "Best Hotel in Chandrapur", "item": "https://hotelaarohi.ujjwalrupakheti.com.np/best-hotel-in-chandrapur"}
+        {
+          "@type": "ListItem", 
+          "position": 1, 
+          "name": "Home", 
+          "item": "https://hotelaarohi.ujjwalrupakheti.com.np/"
+        },
+        {
+          "@type": "ListItem", 
+          "position": 2, 
+          "name": "Premier Accommodation in Chandrapur", 
+          "item": "https://hotelaarohi.ujjwalrupakheti.com.np/best-hotel-in-chandrapur"
+        }
       ]
     }
     </script>
@@ -139,41 +225,78 @@
         </div>
     </nav>
 
-    <article class="pt-40 pb-24 px-4 bg-cream min-h-screen">
+    <article class="pt-32 pb-24 px-4 bg-cream min-h-screen">
         <div class="max-w-4xl mx-auto">
-            <h1 class="font-serif text-4xl md:text-5xl text-secondary mb-4 text-center">Best Hotel in Chandrapur, Rautahat — Hotel Aarohi</h1>
-            <p class="text-center text-gray-400 text-sm mb-10 uppercase tracking-widest">Published May 17, 2026 · by Hotel Aarohi</p>
+            <!-- Visible Breadcrumbs -->
+            <nav class="text-[10px] uppercase tracking-widest text-gray-500 mb-8 font-medium" aria-label="Breadcrumb">
+                <ol class="list-none p-0 inline-flex">
+                    <li class="flex items-center">
+                        <a href="/" class="hover:text-black transition-colors">Home</a>
+                        <span class="material-icons-outlined text-sm mx-2">chevron_right</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-black font-bold">Premier Accommodation in Chandrapur</span>
+                    </li>
+                </ol>
+            </nav>
+
+            <h1 class="font-serif text-4xl md:text-5xl text-secondary mb-6 text-center leading-tight">Elevating Hospitality: The Premier Hotel Experience in Chandrapur, Rautahat</h1>
+            <p class="text-center text-gray-400 text-xs mb-12 uppercase tracking-widest border-b border-gray-200 pb-8">Published May 18, 2026 · By Hotel Aarohi Management</p>
+            
             <div class="prose prose-lg text-gray-700 font-light leading-relaxed max-w-none">
                 
-                <img src="./assets/Room1.webp" alt="Hotel Aarohi — Best Hotel in Chandrapur, Rautahat, Nepal" class="w-full h-auto object-cover shadow-md mb-10">
+                <img src="./assets/Room1.webp" alt="Luxurious suite interior at Hotel Aarohi in Chandrapur, Rautahat" class="w-full h-[500px] object-cover shadow-xl mb-12 rounded-sm">
 
-                <p class="mb-6">When traveling to the vibrant region of Rautahat, Nepal, finding the perfect accommodation is crucial for a memorable trip. Whether you are visiting for business, a family vacation, or a peaceful retreat, you deserve a stay that combines comfort, elegance, and exceptional service. If you are searching for the <strong>best hotel in Chandrapur</strong>, look no further than <a href="/" class="text-black font-medium underline hover:text-emerald-600 transition-colors">Hotel Aarohi</a>. Our establishment is designed to redefine luxury hospitality in the area, offering a sanctuary of silence and style that is unmatched across Chandrapur, Chapur, and the entire Rautahat district.</p>
+                <p class="mb-8 text-xl leading-relaxed text-gray-800">Finding the perfect accommodation transforms a standard trip into an unforgettable journey. For travelers venturing to the bustling economic and cultural hub of Rautahat district, securing a refined, comfortable, and strategically located base is paramount. <a href="/" class="text-black font-medium underline hover:text-emerald-600 transition-colors">Hotel Aarohi</a> has been meticulously designed to set a new standard for luxury hospitality in Nepal's central Terai region, offering an oasis of tranquility amidst the vibrant energy of Chandrapur municipality (widely known locally as Chapur).</p>
 
-                <h2 class="font-serif text-3xl text-secondary mt-12 mb-6">Why Hotel Aarohi is the Best Hotel in Chandrapur</h2>
+                <h2 class="font-serif text-3xl text-secondary mt-16 mb-6 flex items-center gap-3">
+                    <span class="material-icons-outlined text-[#d4af37]">star</span>
+                    A Sanctuary of Style and Silence
+                </h2>
                 
-                <p class="mb-6">At <a href="/" class="text-black font-medium underline hover:text-emerald-600 transition-colors">Hotel Aarohi</a>, we believe that hospitality is an art. We have meticulously crafted every detail of our property to ensure that our guests experience the pinnacle of comfort and sophistication. Visitors from Chandrapur, Chapur, and across Rautahat consistently choose us for our unrivalled combination of luxury, service, and value. Here is what makes us stand out as the premier destination:</p>
+                <p class="mb-6">We understand that modern travelers seek more than just a place to sleep; they demand a holistic experience. Our architectural design and interior aesthetics prioritize natural light, premium materials, and acoustic insulation. When you step into our lobby, the chaotic noise of the East-West Highway fades away, replaced by a serene atmosphere crafted for relaxation and focused business productivity. This dedication to creating a peaceful environment is a core reason why discerning guests consistently choose us as their preferred accommodation in the region.</p>
 
-                <h3 class="font-serif text-2xl text-secondary mt-8 mb-4">Unparalleled Luxury Rooms & Suites in Chandrapur</h3>
-                <p class="mb-6">Our <a href="rooms" class="text-black font-medium underline hover:text-emerald-600 transition-colors">rooms and suites</a> are designed with your utmost comfort in mind. From our affordable Standard Rooms to our expansive Suites, each space is a blend of modern design and warm, inviting aesthetics. We use premium bedding, state-of-the-art amenities, and elegant furnishings to create a restful environment. Whether you are unwinding after a long day of meetings or relaxing on a leisurely weekend in Rautahat, our rooms provide the perfect escape. This commitment to quality is why many consider us the <strong>best hotel in Chandrapur</strong> for a luxurious stay. Rooms start from just NPR 2,500 per night, making luxury accessible to every visitor in Chapur and Chandrapur.</p>
+                <h3 class="font-serif text-2xl text-secondary mt-12 mb-4">Curated Rooms and Suites</h3>
+                <p class="mb-6">Our <a href="rooms" class="text-black font-medium underline hover:text-emerald-600 transition-colors">portfolio of rooms</a> caters to a diverse array of needs, from solo business travelers to large families. We offer four distinct tiers of accommodation:</p>
+                <ul class="list-disc pl-6 mb-8 space-y-3">
+                    <li><strong>Standard Accommodations:</strong> Ideal for brief stays, offering uncompromising cleanliness, high-speed Wi-Fi, and plush bedding starting at NPR 2,500.</li>
+                    <li><strong>Deluxe Rooms:</strong> Featuring expanded floor plans, dedicated workspaces, and upgraded bathroom amenities for enhanced comfort.</li>
+                    <li><strong>Luxury Tier:</strong> Boasting panoramic views, premium furnishings, and complimentary access to select hotel services.</li>
+                    <li><strong>The Pearl Suite:</strong> Our flagship offering, providing expansive living areas, bespoke interior design, and VIP service for those seeking the ultimate lavish retreat.</li>
+                </ul>
 
-                <h3 class="font-serif text-2xl text-secondary mt-8 mb-4">Best Thakali in Chandrapur — Authentic Dining Experience</h3>
-                <p class="mb-6"><a href="best-hotel-in-chandrapur" class="text-black font-medium underline hover:text-emerald-600 transition-colors">Hotel Aarohi</a> is proud to serve the best Thakali in Chandrapur—an authentic taste of heritage crafted with premium local ingredients. Our <a href="restaurant" class="text-black font-medium underline hover:text-emerald-600 transition-colors">in-house restaurant</a> offers a diverse menu that celebrates local Nepalese flavors alongside international cuisine. Prepared by expert chefs using the freshest ingredients from the Rautahat region, every dish tells a story of our heritage. From traditional Mutton Thakali sets to crispy Mo:Mo and refreshing Jhol Mo:Mo, dining at <strong>Hotel Aarohi in Chapur</strong> is a culinary journey that delights the senses. Our restaurant is open daily from 7:00 AM to 10:30 PM, welcoming both hotel guests and visitors from across Chandrapur.</p>
+                <h3 class="font-serif text-2xl text-secondary mt-12 mb-4">Gastronomic Excellence: Celebrating Local Flavors</h3>
+                <p class="mb-6">Culinary excellence is central to the Aarohi experience. Our <a href="restaurant" class="text-black font-medium underline hover:text-emerald-600 transition-colors">in-house dining venue</a> is celebrated not just by our guests, but by local residents who recognize authentic taste. We take immense pride in serving deeply traditional, rich Thakali cuisine. By sourcing premium, organic ingredients directly from local Rautahat farmers and employing traditional Himalayan cooking techniques, our chefs deliver a dining experience that is impeccable. Beyond Nepalese cuisine, our menu features a curated selection of continental and pan-Asian dishes to satisfy diverse international palates.</p>
 
-                <h3 class="font-serif text-2xl text-secondary mt-8 mb-4">World-Class Amenities & Event Halls in Rautahat</h3>
-                <p class="mb-6">To ensure your stay in Chandrapur is flawless, we offer a comprehensive range of amenities including high-speed Wi-Fi, responsive room service, free parking, and well-appointed event spaces perfect for meetings, conferences, weddings, or grand celebrations. Our banquet halls — including Hall A, the Program Hall, and our professional Stage — are the most sought-after event venues in the Rautahat district. Our dedicated staff is trained to anticipate your needs and provide personalized service that exceeds expectations. It's this level of attentive care that solidifies our reputation as the <strong>best hotel in Rautahat</strong>.</p>
+                <h3 class="font-serif text-2xl text-secondary mt-12 mb-4">Versatile Event and Conference Spaces</h3>
+                <p class="mb-6">As a central hub in the Madhesh Province, Chapur frequently hosts significant corporate gatherings and grand social celebrations. Hotel Aarohi provides comprehensive event solutions with multiple versatile venues. Our elegantly appointed Banquet Hall A and our flexible Program Hall are equipped with state-of-the-art audiovisual technology, high-capacity climate control, and customizable seating arrangements. Whether you are orchestrating a high-stakes corporate seminar, an intimate workshop, or a lavish wedding reception, our dedicated event management team ensures flawless execution.</p>
 
-                <h3 class="font-serif text-2xl text-secondary mt-8 mb-4">Prime Location in the Heart of Chandrapur</h3>
-                <p class="mb-6">Conveniently located in the heart of Chandrapur Municipality, <a href="/" class="text-black font-medium underline hover:text-emerald-600 transition-colors">Hotel Aarohi</a> offers easy access to Chapur's main attractions, business districts, and transportation hubs. Despite our central location in Rautahat, our hotel remains a tranquil oasis, shielding you from the hustle and bustle of the city. Whether you are arriving from Kathmandu, Birgunj, or any part of the Terai, reaching the <strong>best hotel in Chapur</strong> is convenient and straightforward.</p>
+                <h3 class="font-serif text-2xl text-secondary mt-12 mb-4">Strategic Geographic Advantage</h3>
+                <p class="mb-8">Location is a critical factor in travel planning. Situated directly in Chandrapur Municipality, Hotel Aarohi offers unparalleled connectivity. We are strategically positioned along the Mahendra Highway, providing effortless access for travelers arriving from Kathmandu, Hetauda, Birgunj, or the eastern districts. This prime geographic location allows you to explore the local markets, conduct business efficiently, or embark on regional excursions while maintaining a luxurious and secure home base.</p>
 
-                <h2 class="font-serif text-3xl text-secondary mt-12 mb-6">Explore More at Hotel Aarohi, Chandrapur</h2>
-                <p class="mb-6">Beyond our rooms and restaurant, we invite you to explore <a href="gallery" class="text-black font-medium underline hover:text-emerald-600 transition-colors">our gallery</a> to see the beauty of our property, or read our <a href="blog" class="text-black font-medium underline hover:text-emerald-600 transition-colors">blog</a> for travel tips about exploring Chandrapur, Chapur, and Rautahat. Every corner of Hotel Aarohi has been designed with care, and we are proud to be the top-rated hotel destination in the region.</p>
+                <div class="bg-white border border-gray-100 p-8 rounded-sm shadow-sm my-12" id="faq-section">
+                    <h2 class="font-serif text-3xl text-secondary mb-8 text-center">Frequently Asked Questions</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg mb-2">What sets Hotel Aarohi apart for travelers in Rautahat?</h4>
+                            <p class="text-sm text-gray-600">Our unmatched blend of modern luxury amenities, impeccable hygiene standards, serene ambiance, and a highly trained hospitality team provides a uniquely elevated experience in the district.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg mb-2">Are your facilities suitable for corporate events and seminars?</h4>
+                            <p class="text-sm text-gray-600">Absolutely. We offer multiple climate-controlled banquet halls equipped with modern presentation technology, supported by customized catering packages designed specifically for business events.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg mb-2">Do you provide authentic local cuisine?</h4>
+                            <p class="text-sm text-gray-600">Yes, our restaurant is renowned for its authentic Thakali cuisine, prepared using traditional methods and fresh, locally sourced ingredients from the surrounding agricultural regions.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg mb-2">Is secure parking available for guests?</h4>
+                            <p class="text-sm text-gray-600">We provide ample, complimentary secure parking on the premises for all our guests, ensuring peace of mind during your stay.</p>
+                        </div>
+                    </div>
+                </div>
 
-                <h2 class="font-serif text-3xl text-secondary mt-12 mb-6">Planning Your Stay at the Best Hotel in Chandrapur</h2>
-                <p class="mb-6">Booking your stay at Hotel Aarohi is simple. Call us directly at <a href="tel:9841946505" class="text-black font-medium underline">+977 984-1946505</a> or use the online booking form on our <a href="/" class="text-black font-medium underline hover:text-emerald-600 transition-colors">homepage</a>. Whether you are planning a corporate event in one of our state-of-the-art halls, a romantic getaway in our Pearl Suite, or simply need the <strong>best accommodation in Rautahat</strong>, we are here to make your experience unforgettable.</p>
-
-                <p class="mb-6">We invite you to experience the unmatched hospitality and elegance that make <a href="/" class="text-black font-medium underline hover:text-emerald-600 transition-colors">Hotel Aarohi</a> the best hotel in Chandrapur, Chapur, and Rautahat. Come discover a sanctuary where every moment is crafted with care, and every guest is treated like royalty. We look forward to welcoming you.</p>
-
-                <h2 class="font-serif text-3xl text-secondary mt-12 mb-6">Frequently Asked Questions</h2>
+                <p class="mb-12 text-center text-lg italic text-gray-500">We invite you to discover a refined standard of hospitality. Experience the comfort, taste the excellence, and let us elevate your journey.</p>
                 
                     
                     <div class="space-y-6">
