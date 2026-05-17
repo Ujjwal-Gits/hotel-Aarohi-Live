@@ -337,59 +337,98 @@
     <!-- Footer -->
     
     <!-- Booking Modal -->
-    <div id="booking-modal" class="fixed inset-0 z-[100] hidden">
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" id="modal-backdrop"></div>
-        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
-            <div class="relative bg-white rounded-sm text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:max-w-lg w-full border border-gray-100">
-                <div class="absolute top-0 right-0 pt-4 pr-4 z-10">
-                    <button type="button" id="close-modal-btn" class="bg-white rounded-full p-2 text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none transition-colors shadow-sm">
-                        <span class="material-icons-outlined">close</span>
-                    </button>
-                </div>
-                <div class="bg-white px-8 pt-10 pb-8">
-                    <div class="text-center mb-8">
-                        <span class="material-icons-outlined text-[#b18c5e]/50 text-4xl mb-3">hotel_class</span>
-                        <h3 id="modal-title" class="font-serif text-2xl text-black mb-2">Book Your Stay</h3>
-                        <p class="text-xs text-gray-500 uppercase tracking-widest">Reserve your luxury experience</p>
-                    </div>
+    <div id="booking-modal" class="fixed inset-0 z-[100] bg-black/60 hidden flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="bg-white max-w-md w-full rounded shadow-2xl transform scale-95 transition-transform duration-300" id="booking-modal-content">
+            <div class="p-8 relative">
+                <button id="close-booking" class="absolute top-4 right-4 text-gray-400 hover:text-black transition-colors">
+                    <span class="material-icons-outlined">close</span>
+                </button>
+                
+                <div id="booking-form-step">
+                    <h3 id="modal-title" class="font-serif text-2xl text-black mb-2">Book Your Stay</h3>
+                    <p id="modal-subtitle" class="text-[10px] text-gray-500 mb-8 uppercase tracking-widest">Enter your details to reserve</p>
                     
-                    
-                    <div class="space-y-6">
-                        <form id="booking-form" action="https://formspree.io/f/mpqnanyb" method="POST" class="space-y-6">
-                            <input type="hidden" id="modal-booking-context" name="Booking_Context" value="General Stay">
-                            <input type="hidden" id="modal-room-name" name="Room_Name" value="">
-                            <input type="hidden" id="modal-room-price" name="Room_Price" value="">
-                            <input type="hidden" id="modal-hall-name" name="Hall_Name" value="">
-                            <input type="hidden" id="modal-hall-time" name="Event_Time" value="">
+                     <form id="booking-form" action="https://formspree.io/f/mpqnanyb" method="POST" class="space-y-6">
+                        <!-- Hidden booking metadata fields -->
+                        <input type="hidden" id="modal-booking-type" name="booking_type" value="Room">
+                        <input type="hidden" id="modal-room-name" name="room_name" value="">
+                        <input type="hidden" id="modal-room-price" name="room_price" value="">
+                        <input type="hidden" id="modal-hall-name" name="hall_name" value="">
+
+                        <div>
+                            <label class="block text-[9px] text-gray-600 uppercase tracking-widest font-bold mb-2">Full Name</label>
+                            <input type="text" name="name" required class="w-full border-b border-gray-300 focus:border-black py-2 text-sm outline-none bg-transparent transition-colors" placeholder="Name">
+                        </div>
+                        <div>
+                            <label class="block text-[9px] text-gray-600 uppercase tracking-widest font-bold mb-2">Phone Number</label>
+                            <input type="tel" name="phone" required class="w-full border-b border-gray-300 focus:border-black py-2 text-sm outline-none bg-transparent transition-colors" placeholder="+977 98XXXXXXX">
+                        </div>
+                        
+                        <!-- Custom Modal Start Time Dropdown (Visible only for Hall bookings) -->
+                        <div id="modal-time-container" class="relative hidden">
+                            <label class="block text-[9px] text-gray-600 uppercase tracking-widest font-bold mb-2">Start Time</label>
+                            <div id="modal-time-trigger" class="flex items-center justify-between w-full border-b border-gray-300 focus-within:border-black py-2 cursor-pointer group">
+                                <span id="modal-time-display" class="text-gray-900 font-sans text-sm font-medium">10:00 AM</span>
+                                <span class="material-icons-outlined text-gray-400 text-sm group-hover:text-primary transition-all">access_time</span>
+                            </div>
+                            <input type="hidden" id="modal-time-input" name="hall_time" value="10:00 AM">
+                            <div id="modal-time-dropdown" class="absolute left-0 right-0 bottom-full mb-2 bg-white border border-gray-100 rounded shadow-2xl hidden z-50 py-1 transition-all max-h-48 overflow-y-auto">
+                                <div class="px-4 py-2.5 text-xs hover:bg-gray-50 cursor-pointer text-gray-800 font-medium" data-value="08:00 AM">08:00 AM</div>
+                                <div class="px-4 py-2.5 text-xs hover:bg-gray-50 cursor-pointer text-gray-800 font-medium" data-value="09:00 AM">09:00 AM</div>
+                                <div class="px-4 py-2.5 text-xs hover:bg-gray-50 cursor-pointer text-gray-800 font-medium" data-value="10:00 AM">10:00 AM</div>
+                                <div class="px-4 py-2.5 text-xs hover:bg-gray-50 cursor-pointer text-gray-800 font-medium" data-value="11:00 AM">11:00 AM</div>
+                                <div class="px-4 py-2.5 text-xs hover:bg-gray-50 cursor-pointer text-gray-800 font-medium" data-value="12:00 PM">12:00 PM</div>
+                                <div class="px-4 py-2.5 text-xs hover:bg-gray-50 cursor-pointer text-gray-800 font-medium" data-value="01:00 PM">01:00 PM</div>
+                                <div class="px-4 py-2.5 text-xs hover:bg-gray-50 cursor-pointer text-gray-800 font-medium" data-value="02:00 PM">02:00 PM</div>
+                                <div class="px-4 py-2.5 text-xs hover:bg-gray-50 cursor-pointer text-gray-800 font-medium" data-value="03:00 PM">03:00 PM</div>
+                                <div class="px-4 py-2.5 text-xs hover:bg-gray-50 cursor-pointer text-gray-800 font-medium" data-value="04:00 PM">04:00 PM</div>
+                                <div class="px-4 py-2.5 text-xs hover:bg-gray-50 cursor-pointer text-gray-800 font-medium" data-value="05:00 PM">05:00 PM</div>
+                                <div class="px-4 py-2.5 text-xs hover:bg-gray-50 cursor-pointer text-gray-800 font-medium" data-value="06:00 PM">06:00 PM</div>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <label id="booking-date-label" class="block text-[9px] text-gray-600 uppercase tracking-widest font-bold mb-2">Check-in Date</label>
+                            <div id="modal-date-trigger" class="flex items-center justify-between w-full border-b border-gray-300 focus-within:border-black py-2 cursor-pointer group">
+                                <span id="modal-date-display" class="text-gray-900 font-sans text-sm font-medium">Select Date</span>
+                                <span class="material-icons-outlined text-gray-400 text-sm group-hover:text-primary transition-all">calendar_today</span>
+                            </div>
+                            <input type="hidden" id="modal-date-input" name="date" required>
                             
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-[9px] text-gray-600 uppercase tracking-widest font-bold mb-1">Full Name</label>
-                                    <input type="text" name="Name" required class="w-full bg-gray-50 border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-gray-400 transition-colors">
+                            <!-- Custom Calendar Popup -->
+                            <div id="modal-calendar" class="absolute left-0 bottom-full mb-2 bg-white border border-gray-100 rounded shadow-2xl hidden z-50 p-4 w-[280px] transition-all">
+                                <div class="flex justify-between items-center mb-3">
+                                    <button type="button" class="prev-month text-gray-500 hover:text-black focus:outline-none">
+                                        <span class="material-icons-outlined text-lg">chevron_left</span>
+                                    </button>
+                                    <span class="month-year font-serif text-sm text-black font-semibold">May 2026</span>
+                                    <button type="button" class="next-month text-gray-500 hover:text-black focus:outline-none">
+                                        <span class="material-icons-outlined text-lg">chevron_right</span>
+                                    </button>
                                 </div>
-                                <div>
-                                    <label class="block text-[9px] text-gray-600 uppercase tracking-widest font-bold mb-1">Phone Number</label>
-                                    <input type="tel" name="Phone" required class="w-full bg-gray-50 border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-gray-400 transition-colors">
+                                <div class="grid grid-cols-7 gap-1 text-center text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-2">
+                                    <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
                                 </div>
-                                <div class="col-span-1 md:col-span-2">
-                                    <label class="block text-[9px] text-gray-600 uppercase tracking-widest font-bold mb-1">Check In Date (Required)</label>
-                                    <input type="date" id="modal-checkin-date" name="CheckIn" required class="w-full bg-gray-50 border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-gray-400 transition-colors">
-                                </div>
-                                <div id="modal-time-container" class="hidden col-span-1 md:col-span-2">
-                                    <label class="block text-[9px] text-gray-600 uppercase tracking-widest font-bold mb-1">Event Start Time</label>
-                                    <select id="modal-time-select" name="Start_Time" class="w-full bg-gray-50 border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-gray-400 transition-colors appearance-none">
-                                        <option value="">Select Time</option>
-                                        <option value="08:00 AM">08:00 AM</option>
-                                        <option value="12:00 PM">12:00 PM</option>
-                                        <option value="06:00 PM">06:00 PM</option>
-                                    </select>
+                                <div class="days-grid grid grid-cols-7 gap-1 text-center text-xs">
                                 </div>
                             </div>
+                        </div>
+                        <button type="submit" class="w-full mt-4 bg-black text-white hover:bg-gray-800 py-4 rounded uppercase text-[10px] tracking-widest font-bold transition-all shadow-xl">
+                            Confirm Booking
+                        </button>
+                    </form>
+                </div>
 
-                            <button type="submit" class="w-full bg-black text-white px-6 py-4 rounded-sm uppercase text-[10px] tracking-widest font-bold hover:bg-gray-800 transition-colors shadow-lg">Submit Request</button>
-                            <p class="text-[10px] text-gray-400 text-center mt-2 uppercase tracking-wider">Available 24/7 for your convenience</p>
-                        </form>
+                <div id="booking-success-step" class="hidden text-center py-6">
+                    <div class="w-20 h-20 bg-green-50 border border-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="material-icons-outlined text-4xl">check</span>
                     </div>
+                    <h3 class="text-xl text-black mb-6 font-medium leading-relaxed font-serif">धन्यवाद! बुकिङको अन्तिम पुष्टि गर्न हामीलाई फोन गर्नुहोस्।</h3>
+                    
+                    <a href="tel:9841946505" class="inline-flex items-center gap-3 bg-black hover:bg-gray-800 text-white px-8 py-4 rounded-full transition-all shadow-xl group">
+                        <span class="material-icons-outlined group-hover:animate-pulse">call</span>
+                        <span class="font-bold tracking-widest text-sm">984-1946505</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -436,195 +475,376 @@
         </div>
     </footer>
 
-    
     <script>
-        // Mobile Menu
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if(mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+        document.addEventListener('DOMContentLoaded', () => {
+            // Custom Premium Notification System
+            const showNotification = (message, type = 'error') => {
+                let container = document.getElementById('notification-container');
+                if (!container) {
+                    container = document.createElement('div');
+                    container.id = 'notification-container';
+                    container.className = 'fixed top-6 left-1/2 -translate-x-1/2 z-[300] flex flex-col gap-3 w-full max-w-sm px-4 pointer-events-none';
+                    document.body.appendChild(container);
+                }
+                
+                const notification = document.createElement('div');
+                const themeClass = type === 'error' 
+                    ? 'border-red-200 bg-white/95 text-gray-900 shadow-[0_20px_50px_rgba(0,0,0,0.15)]' 
+                    : 'border-green-200 bg-white/95 text-gray-900 shadow-[0_20px_50px_rgba(0,0,0,0.15)]';
+                
+                notification.className = `backdrop-blur-md border ${themeClass} rounded-lg p-4 flex items-start gap-3.5 transform translate-y-[-20px] opacity-0 transition-all duration-300 pointer-events-auto`;
+                
+                const iconColor = type === 'error' ? 'text-red-500 bg-red-50 border-red-100' : 'text-green-500 bg-green-50 border-green-100';
+                const iconName = type === 'error' ? 'priority_high' : 'check';
+                
+                notification.innerHTML = `
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full ${iconColor} border flex items-center justify-center">
+                        <span class="material-icons-outlined text-sm font-bold">${iconName}</span>
+                    </div>
+                    <div class="flex-grow pt-0.5">
+                        <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">${type === 'error' ? 'Attention' : 'Success'}</p>
+                        <p class="text-xs text-gray-700 leading-relaxed font-sans font-medium">${message}</p>
+                    </div>
+                    <button class="flex-shrink-0 text-gray-400 hover:text-black transition-colors focus:outline-none pt-0.5">
+                        <span class="material-icons-outlined text-sm">close</span>
+                    </button>
+                `;
+                
+                container.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.classList.remove('translate-y-[-20px]', 'opacity-0');
+                }, 10);
+                
+                const closeNotification = () => {
+                    notification.classList.add('translate-y-[-20px]', 'opacity-0');
+                    setTimeout(() => {
+                        notification.remove();
+                        if (container.children.length === 0) {
+                            container.remove();
+                        }
+                    }, 300);
+                };
+                
+                notification.querySelector('button').addEventListener('click', closeNotification);
+                setTimeout(closeNotification, 4000);
+            };
+
+            // Hook window.alert to beautiful notification UI
+            window.alert = (msg) => showNotification(msg, 'error');
+
+            // Navbar Scroll Effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (navbar) {
+                    if (window.scrollY > 20) navbar.classList.add('shadow-sm');
+                    else navbar.classList.remove('shadow-sm');
+                }
             });
-        }
 
-        // Room Filtering Logic
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const roomCards = document.querySelectorAll('.room-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Update active state classes on buttons
-                filterBtns.forEach(b => {
-                    b.classList.remove('border-black', 'text-black');
-                    b.classList.add('border-transparent', 'text-gray-400');
+            // Mobile Menu Logic
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
                 });
-                btn.classList.add('border-black', 'text-black');
-                btn.classList.remove('border-transparent', 'text-gray-400');
+            }
 
-                const filterValue = btn.getAttribute('data-filter');
+            // Room Filtering Logic
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const roomCards = document.querySelectorAll('.room-card');
 
-                roomCards.forEach(card => {
-                    const cardType = card.getAttribute('data-type');
-                    if (filterValue === 'All' || cardType === filterValue) {
-                        card.classList.remove('hidden');
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'scale(1)';
-                        }, 10);
-                    } else {
-                        card.style.opacity = '0';
-                        card.style.transform = 'scale(0.95)';
-                        setTimeout(() => {
-                            card.classList.add('hidden');
-                        }, 300);
-                    }
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active state classes on buttons
+                    filterBtns.forEach(b => {
+                        b.classList.remove('border-black', 'text-black');
+                        b.classList.add('border-transparent', 'text-gray-400');
+                    });
+                    btn.classList.add('border-black', 'text-black');
+                    btn.classList.remove('border-transparent', 'text-gray-400');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    roomCards.forEach(card => {
+                        const cardType = card.getAttribute('data-type');
+                        if (filterValue === 'All' || cardType === filterValue) {
+                            card.classList.remove('hidden');
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'scale(1)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.95)';
+                            setTimeout(() => {
+                                card.classList.add('hidden');
+                            }, 300);
+                        }
+                    });
                 });
             });
-        });
 
-        // Booking Modal Logic
-        const modal = document.getElementById('booking-modal');
-        const bookBtns = document.querySelectorAll('.book-btn, .check-availability-btn');
-        const closeModalBtn = document.getElementById('close-modal-btn');
-        const modalBackdrop = document.getElementById('modal-backdrop');
-        const titleEl = document.getElementById('modal-title');
+            // Booking Modal Logic
+            const bookingModal = document.getElementById('booking-modal');
+            const bookingModalContent = document.getElementById('booking-modal-content');
+            const closeBooking = document.getElementById('close-booking');
+            const bookingFormStep = document.getElementById('booking-form-step');
+            const bookingSuccessStep = document.getElementById('booking-success-step');
+            const bookingForm = document.getElementById('booking-form');
+            const bookBtns = document.querySelectorAll('.book-btn');
 
-        const contextInput = document.getElementById('modal-booking-context');
-        const roomNameInput = document.getElementById('modal-room-name');
-        const roomPriceInput = document.getElementById('modal-room-price');
-        const hallNameInput = document.getElementById('modal-hall-name');
-        const hallTimeInput = document.getElementById('modal-hall-time');
-        
-        const modalCheckinDate = document.getElementById('modal-checkin-date');
-        const timeContainer = document.getElementById('modal-time-container');
-        const timeSelect = document.getElementById('modal-time-select');
-
-        function openModal(title) {
-            if(modal) {
-                modal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-                if (titleEl) titleEl.textContent = title || 'Book Your Stay';
-            }
-        }
-
-        function closeModal() {
-            if(modal) {
-                modal.classList.add('hidden');
-                document.body.style.overflow = '';
-            }
-        }
-
-        bookBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
+            const openModal = (e) => {
                 e.preventDefault();
-                let title = 'Book Your Stay';
-                let context = 'General Stay';
+                const btn = e.currentTarget;
+                const titleEl = document.getElementById('modal-title');
+                const subtitleEl = document.getElementById('modal-subtitle');
+                const dateLabelEl = document.getElementById('booking-date-label');
+                
+                const dateTriggerContainer = document.getElementById('modal-date-trigger').closest('.relative');
+                const modalDateInput = document.getElementById('modal-date-input');
+                const modalTimeContainer = document.getElementById('modal-time-container');
+                const modalBookingType = document.getElementById('modal-booking-type');
+                const modalRoomName = document.getElementById('modal-room-name');
+                const modalRoomPrice = document.getElementById('modal-room-price');
+                const modalHallName = document.getElementById('modal-hall-name');
                 
                 // Reset hidden fields
-                if(roomNameInput) roomNameInput.value = '';
-                if(roomPriceInput) roomPriceInput.value = '';
-                if(hallNameInput) hallNameInput.value = '';
-                if(hallTimeInput) hallTimeInput.value = '';
-                if(timeSelect) timeSelect.removeAttribute('required');
+                if (modalBookingType) modalBookingType.value = 'Room';
+                if (modalRoomName) modalRoomName.value = '';
+                if (modalRoomPrice) modalRoomPrice.value = '';
+                if (modalHallName) modalHallName.value = '';
+                if (modalTimeContainer) modalTimeContainer.classList.add('hidden');
 
-                // 1. Check if it's the inline "CHECK AVAILABILITY" button for rooms
-                if (btn.textContent.includes('CHECK AVAILABILITY') || btn.textContent.includes('Check Availability')) {
-                    const checkinInline = document.getElementById('checkin-date-input');
-                    if (checkinInline && !checkinInline.value) {
-                        alert("Please select a Check-In Date.");
-                        return; // Stop form from opening
+                // Detect booking context
+                const card = btn.closest('.room-card') || btn.closest('article');
+                
+                if (titleEl) titleEl.textContent = 'Book Your Stay';
+                if (subtitleEl) subtitleEl.textContent = 'Enter your details to reserve';
+                if (dateLabelEl) dateLabelEl.textContent = 'Check-in Date';
+                if (modalBookingType) modalBookingType.value = 'Room';
+                
+                if (card) {
+                    // Card Room Booking (User should receive Room Name and Price)
+                    const h3 = card.querySelector('h3');
+                    const priceEl = card.querySelector('.text-base, .text-xl, .text-primary');
+                    if (h3 && modalRoomName) {
+                        modalRoomName.value = h3.textContent.trim();
+                        titleEl.textContent = 'Book ' + h3.textContent.trim();
                     }
-                    if (checkinInline && modalCheckinDate) {
-                        modalCheckinDate.value = checkinInline.value;
+                    if (priceEl && modalRoomPrice) {
+                        modalRoomPrice.value = priceEl.textContent.trim();
                     }
-                    context = 'Hero Inline Booking';
                 }
                 
-                // 2. Check if it's the inline "BOOK HALL" button from Hero section
-                else if (btn.textContent.includes('BOOK HALL') && btn.closest('#form-hall')) {
-                    const hallDateInline = document.getElementById('hall-date-input');
-                    const hallDisplay = document.getElementById('hall-display');
-                    const hallTimeDisplay = document.getElementById('hall-time-display');
-                    
-                    if (hallDateInline && !hallDateInline.value) {
-                        alert("Please select a Date to book the hall.");
-                        return;
-                    }
-                    
-                    title = 'Reserve Banquet Hall';
-                    context = 'Banquet Hall';
-                    if (hallNameInput && hallDisplay) hallNameInput.value = hallDisplay.textContent;
-                    if (hallTimeInput && hallTimeDisplay) hallTimeInput.value = hallTimeDisplay.textContent;
-                    if (modalCheckinDate && hallDateInline) modalCheckinDate.value = hallDateInline.value;
-                }
+                // Show date field in modal
+                if (dateTriggerContainer) dateTriggerContainer.classList.remove('hidden');
+                if (modalDateInput) modalDateInput.value = '';
+                const modalDateDisplay = document.getElementById('modal-date-display');
+                if (modalDateDisplay) modalDateDisplay.textContent = 'Select Date';
                 
-                // 3. Check if it's a specific Room Card (contains price)
-                else if (btn.closest('.group') && btn.closest('.group').querySelector('h3')) {
-                    const roomCard = btn.closest('.group');
-                    const rName = roomCard.querySelector('h3').textContent;
-                    const rPrice = roomCard.querySelector('.text-\\[10px\\]') ? roomCard.querySelector('.text-\\[10px\\]').textContent : '';
-                    
-                    title = 'Book ' + rName;
-                    context = 'Room Booking';
-                    if(roomNameInput) roomNameInput.value = rName;
-                    if(roomPriceInput) roomPriceInput.value = rPrice;
-                }
-                
-                // 4. Fallback for generic Hall buttons
-                else if (btn.textContent.includes('BOOK HALL')) {
-                    title = 'Reserve Banquet Hall';
-                    context = 'Banquet Hall';
-                }
+                bookingModal.classList.remove('hidden');
+                setTimeout(() => {
+                    bookingModal.classList.remove('opacity-0');
+                    bookingModalContent.classList.remove('scale-95');
+                }, 10);
+            };
 
-                if (contextInput) contextInput.value = context;
-                
-                // Handle Time Container visibility
-                if (timeContainer) {
-                    if (context === 'Banquet Hall') {
-                        timeContainer.classList.remove('hidden');
-                        if(timeSelect) timeSelect.setAttribute('required', 'true');
-                    } else {
-                        timeContainer.classList.add('hidden');
-                    }
-                }
-                
-                openModal(title);
+            const closeModal = () => {
+                bookingModal.classList.add('opacity-0');
+                bookingModalContent.classList.add('scale-95');
+                setTimeout(() => {
+                    bookingModal.classList.add('hidden');
+                    bookingFormStep.classList.remove('hidden');
+                    bookingSuccessStep.classList.add('hidden');
+                    bookingForm.reset();
+                    const dateTriggerContainer = document.getElementById('modal-date-trigger').closest('.relative');
+                    if (dateTriggerContainer) dateTriggerContainer.classList.remove('hidden');
+                }, 300);
+            };
+
+            bookBtns.forEach(btn => btn.addEventListener('click', openModal));
+            closeBooking.addEventListener('click', closeModal);
+            bookingModal.addEventListener('click', (e) => {
+                if(e.target === bookingModal) closeModal();
             });
-        });
 
-        if(closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
-        if(modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
-    
-        // Formspree AJAX Submission
-        const bookingForm = document.getElementById('booking-form');
-        if (bookingForm) {
-            bookingForm.addEventListener('submit', function(e) {
+            bookingForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const btn = bookingForm.querySelector('button[type="submit"]');
-                const originalText = btn.textContent;
-                btn.textContent = 'Submitting...';
-                btn.disabled = true;
+                
+                const dateVal = document.getElementById('modal-date-input').value;
+                if (!dateVal) {
+                    alert('Please select a Check-in Date first!');
+                    return;
+                }
 
-                const formData = new FormData(bookingForm);
-                fetch(bookingForm.action, {
+                const data = new FormData(bookingForm);
+                
+                // Submit via AJAX
+                fetch('https://formspree.io/f/mpqnanyb', {
                     method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
                 }).then(response => {
                     if (response.ok) {
-                        bookingForm.innerHTML = '<div class="text-center py-8"><span class="material-icons-outlined text-green-500 text-5xl mb-4">check_circle</span><h3 class="font-serif text-2xl text-black mb-2">Thanks!</h3><p class="text-sm text-gray-500 mb-6">The form was submitted successfully. We will contact you shortly.</p><button type="button" id="go-back-btn" class="text-black uppercase text-[10px] tracking-widest font-bold border-b border-black pb-1 hover:text-gray-500 transition-colors">Go back</button></div>';
-                        document.getElementById('go-back-btn').addEventListener('click', closeModal);
+                        bookingFormStep.classList.add('hidden');
+                        bookingSuccessStep.classList.remove('hidden');
+                        bookingForm.reset();
                     } else {
-                        alert("Oops! There was a problem submitting your form.");
-                        btn.textContent = originalText;
-                        btn.disabled = false;
+                        alert('Oops! There was a problem submitting your booking. Please try again or call us at 984-1946505.');
                     }
                 }).catch(error => {
-                    alert("Oops! There was a problem submitting your form.");
-                    btn.textContent = originalText;
-                    btn.disabled = false;
+                    alert('Oops! There was a problem submitting your booking. Please try again or call us at 984-1946505.');
                 });
             });
-        }</script>
+
+            // Custom Calendar Picker JS Engine
+            const initCustomCalendar = (triggerId, displayId, inputId, calendarId) => {
+                const trigger = document.getElementById(triggerId);
+                const display = document.getElementById(displayId);
+                const input = document.getElementById(inputId);
+                const calendar = document.getElementById(calendarId);
+                
+                if (!trigger || !calendar) return;
+                
+                const prevBtn = calendar.querySelector('.prev-month');
+                const nextBtn = calendar.querySelector('.next-month');
+                const monthYearText = calendar.querySelector('.month-year');
+                const daysGrid = calendar.querySelector('.days-grid');
+                
+                let currentDate = new Date();
+                let selectedDate = null;
+                
+                const months = [
+                    "January", "February", "March", "April", "May", "June", 
+                    "July", "August", "September", "October", "November", "December"
+                ];
+                
+                const renderCalendar = () => {
+                    const year = currentDate.getFullYear();
+                    const month = currentDate.getMonth();
+                    
+                    monthYearText.textContent = `${months[month]} ${year}`;
+                    
+                    // Clear previous days
+                    daysGrid.innerHTML = '';
+                    
+                    const firstDayIndex = new Date(year, month, 1).getDay();
+                    const lastDay = new Date(year, month + 1, 0).getDate();
+                    const prevLastDay = new Date(year, month, 0).getDate();
+                    
+                    // Render padding days from previous month
+                    for (let x = firstDayIndex; x > 0; x--) {
+                        const dayDiv = document.createElement('div');
+                        dayDiv.className = "text-gray-300 py-2 cursor-default pointer-events-none";
+                        dayDiv.textContent = prevLastDay - x + 1;
+                        daysGrid.appendChild(dayDiv);
+                    }
+                    
+                    // Render current month days
+                    for (let i = 1; i <= lastDay; i++) {
+                        const dayDiv = document.createElement('div');
+                        dayDiv.className = "py-2 cursor-pointer hover:bg-gray-100 rounded-full transition-all text-gray-800 font-medium hover:scale-105 active:scale-95";
+                        
+                        if (selectedDate && 
+                            selectedDate.getDate() === i && 
+                            selectedDate.getMonth() === month && 
+                            selectedDate.getFullYear() === year) {
+                            dayDiv.className = "py-2 cursor-pointer bg-black text-white rounded-full font-bold shadow-md transition-all";
+                        }
+                        
+                        dayDiv.textContent = i;
+                        dayDiv.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            selectedDate = new Date(year, month, i);
+                            
+                            const formattedDisplay = `${months[month].substring(0,3)} ${i}, ${year}`;
+                            display.textContent = formattedDisplay;
+                            
+                            const mm = String(month + 1).padStart(2, '0');
+                            const dd = String(i).padStart(2, '0');
+                            input.value = `${year}-${mm}-${dd}`;
+                            
+                            calendar.classList.add('hidden');
+                        });
+                        
+                        daysGrid.appendChild(dayDiv);
+                    }
+                };
+                
+                trigger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    document.querySelectorAll('.z-50').forEach(el => {
+                        if (el.id === 'navbar' || el.tagName === 'NAV') return;
+                        if (el !== calendar && !el.contains(trigger)) el.classList.add('hidden');
+                    });
+                    calendar.classList.toggle('hidden');
+                });
+
+                calendar.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+                
+                prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentDate.setMonth(currentDate.getMonth() - 1);
+                    renderCalendar();
+                });
+                
+                nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentDate.setMonth(currentDate.getMonth() + 1);
+                    renderCalendar();
+                });
+                
+                renderCalendar();
+            };
+
+            // Custom Dropdown Picker JS Engine
+            const initCustomDropdown = (triggerId, dropdownId, displayId) => {
+                const trigger = document.getElementById(triggerId);
+                const dropdown = document.getElementById(dropdownId);
+                const display = document.getElementById(displayId);
+                
+                if (!trigger || !dropdown) return;
+                
+                trigger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    document.querySelectorAll('.z-50').forEach(el => {
+                        if (el.id === 'navbar' || el.tagName === 'NAV') return;
+                        if (el !== dropdown && !el.contains(trigger)) el.classList.add('hidden');
+                    });
+                    dropdown.classList.toggle('hidden');
+                });
+                
+                dropdown.querySelectorAll('[data-value]').forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        display.textContent = item.getAttribute('data-value');
+                        const parent = trigger.parentElement;
+                        const hiddenInput = parent ? parent.querySelector('input[type="hidden"]') : null;
+                        if (hiddenInput) {
+                            hiddenInput.value = item.getAttribute('data-value');
+                        }
+                        dropdown.classList.add('hidden');
+                    });
+                });
+            };
+
+            // Initialize Calendars & Dropdowns
+            initCustomCalendar('modal-date-trigger', 'modal-date-display', 'modal-date-input', 'modal-calendar');
+            initCustomDropdown('modal-time-trigger', 'modal-time-dropdown', 'modal-time-display');
+
+            // Close dropdowns/calendars on click outside
+            document.addEventListener('click', () => {
+                document.querySelectorAll('#modal-calendar, #modal-time-dropdown').forEach(el => {
+                    el.classList.add('hidden');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
