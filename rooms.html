@@ -447,6 +447,41 @@
             });
         }
 
+        // Room Filtering Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const roomCards = document.querySelectorAll('.room-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state classes on buttons
+                filterBtns.forEach(b => {
+                    b.classList.remove('border-black', 'text-black');
+                    b.classList.add('border-transparent', 'text-gray-400');
+                });
+                btn.classList.add('border-black', 'text-black');
+                btn.classList.remove('border-transparent', 'text-gray-400');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                roomCards.forEach(card => {
+                    const cardType = card.getAttribute('data-type');
+                    if (filterValue === 'All' || cardType === filterValue) {
+                        card.classList.remove('hidden');
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            card.classList.add('hidden');
+                        }, 300);
+                    }
+                });
+            });
+        });
+
         // Booking Modal Logic
         const modal = document.getElementById('booking-modal');
         const bookBtns = document.querySelectorAll('.book-btn, .check-availability-btn');
