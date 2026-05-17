@@ -1,0 +1,11 @@
+/* TEAM */
+Developer: Hotel Aarohi Dev Team
+Contact: reservations@aarohi.com
+Location: Chandrapur (Chapur), Rautahat, Nepal
+
+/* SITE */
+Last update: 2026-05-17
+Language: English
+Doctype: HTML5
+IDE: VSCode, WebStorm
+Frameworks: TailwindCSS, Vanilla JS
